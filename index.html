@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../Belajar Bootsrap/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+
+	<title>Work From Home</title>
+
+	<style>
+		body{
+			background-image: url('schedule-background.jpg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 0 60%;
+			font-family: 'Poppins', sans-serif;
+			color: #ddd;
+		}
+		h2,h5{
+			font-family: 'Raleway', sans-serif;
+		}
+		table{
+			background:rgb(50,50,50,0.4);
+			box-shadow: 0px 0px 30px #000;
+			border-radius: 50px;
+		}
+		p{font-family:monospace;}
+	</style>
+</head>
+<body>
+
+
+
+	<div class="container mt-5 text-center">	
+		<h2 class="mt-4 font-weight-bold">Hello Elang, <span id="waktu"></span> </h2>
+		<i class="fa fa-clock fa-4x my-3"></i>
+		<h1 id="jam" class="font-weight-bold"></h1>
+		<h5 id="tanggal"></h5>
+
+
+		<br><caption>Schedule Monday - Friday</caption><br><br>
+		<table class="table text-white">
+			<thead>
+				<tr class="text-uppercase table-borderless">
+					<th scope="col">Jam</th>
+					<th scope="col">Start</th>
+					<th scope="col">End</th>
+					<th scope="col">Working</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Pertama</th>
+					<td>7 : 30 WIB</td>
+					<td>9 : 30 WIB</td>
+					<td>Writing Articles</td>
+				</tr>
+				<tr>
+					<th scape="row">Kedua</th>
+					<td>10 : 00 WIB</td>
+					<td>11 : 30 WIB</td>
+					<td>Online Lectures</td>
+				</tr>
+				<tr>
+					<th Scape="row">Ketiga</th>
+					<td>13 : 00 WIB</td>
+					<td>15 : 00 WIB</td>
+					<td>Upgrade Skill</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p class="text-left mt-5">Lakukan aktifitas ini hari Senin - Jum'at. Kamu boleh Libur hanya di Akhir Pekan hari Sabtu & Minggu.</p>
+	</div>
+
+
+
+	<script>
+		var greeting;
+		var hours = new Date().getHours();
+		var minute = new Date().getMinutes();
+
+		document.getElementById("jam").innerHTML = hours+" : "+minute;
+
+		if (hours<=10) {
+			document.getElementById('waktu').innerHTML = "Good Morning";
+		}else if(hours<15){
+			document.getElementById('waktu').innerHTML = "Good Day";
+		}else if (hours<=18) {
+			document.getElementById('waktu').innerHTML = "Good Afternoon";
+		}else if (hours<1) {
+			document.getElementById('waktu').innerHTML = "Good Night";
+		}
+
+		document.getElementById('tanggal').innerHTML = new Date().toDateString();
+
+		// tambahkan jam saat aktif kegiatan waktu sekarang
+
+	</script>
+
+	<script src="https://kit.fontawesome.com/6f7b60ac72.js" crossorigin="anonymous"></script>
+</body>
+</html>
