@@ -88,11 +88,11 @@
 
 		document.getElementById("jam").innerHTML = hours+" : "+minute;
 
-		if (hours<=10) {
+		if (hours<10) {
 			document.getElementById('waktu').innerHTML = "Good Morning";
 		}else if(hours<15){
 			document.getElementById('waktu').innerHTML = "Good Day";
-		}else if (hours<=18) {
+		}else if (hours<18) {
 			document.getElementById('waktu').innerHTML = "Good Afternoon";
 		}else if (hours<1) {
 			document.getElementById('waktu').innerHTML = "Good Night";
