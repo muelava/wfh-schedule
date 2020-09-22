@@ -55,19 +55,19 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr id="jamPertama">
 					<th scope="row">Pertama</th>
 					<td>7 : 30 WIB</td>
 					<td>9 : 30 WIB</td>
 					<td>Writing Articles</td>
 				</tr>
-				<tr>
+				<tr id="jamKedua">
 					<th scape="row">Kedua</th>
 					<td>10 : 00 WIB</td>
 					<td>11 : 30 WIB</td>
 					<td>Online Lectures</td>
 				</tr>
-				<tr>
+				<tr id="jamKetiga">
 					<th Scape="row">Ketiga</th>
 					<td>13 : 00 WIB</td>
 					<td>15 : 00 WIB</td>
@@ -101,6 +101,14 @@
 		document.getElementById('tanggal').innerHTML = new Date().toDateString();
 
 		// tambahkan jam saat aktif kegiatan waktu sekarang
+
+		if (hours>=7 && hours<=8) {
+			document.getElementById("jamPertama").style.backgroundColor = "green";
+		}else if(hours>=9 && hours<=11) {
+			document.getElementById("jamPertama").style.backgroundColor = "green";
+		}else if(hours>=13 && hours<=15) {
+			document.getElementById("jamKetiga").style.backgroundColor = "green";
+		}
 
 	</script>
 
