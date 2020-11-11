@@ -14,7 +14,7 @@
 
 	<style>
 		body{
-			background-image: url('schedule-background.jpg');
+			/*background-image: url('shangri-la-hotel.jpg');*/
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -30,21 +30,20 @@
 			box-shadow: 0px 0px 30px #000;
 			border-radius: 50px;
 		}
-		p{font-family:monospace;}
+		p{font-family: cursive;}
+
 	</style>
 </head>
 <body>
 
-
-
 	<div class="container mt-5 text-center">	
-		<h2 class="mt-4 font-weight-bold">Hello Elang, <span id="waktu"></span> </h2>
+		<h2 class="mt-4 font-weight-bold"><span id="waktu"></span> Muelava</h2>
 		<i class="fa fa-clock fa-4x my-3"></i>
 		<h1 id="jam" class="font-weight-bold"></h1>
 		<h5 id="tanggal"></h5>
 
 
-		<br><caption>Schedule Monday - Friday</caption><br><br>
+		<br><caption></caption>
 		<table class="table text-white">
 			<thead>
 				<tr class="text-uppercase table-borderless">
@@ -76,38 +75,64 @@
 			</tbody>
 		</table>
 
-		<p class="text-left mt-5">Lakukan aktifitas ini hari Senin - Jum'at. Kamu boleh Libur hanya di Akhir Pekan hari Sabtu & Minggu.</p>
+		<p id="notif_1" class="alert alert-info d-none" role='alert'></p>
+
+		<p class="text-left mt-5"><span class="text-danger">*</span>Jadwal ini ditetapkan untuk hari Senin - Jum'at. Diluar hari tersebut LIBUR.</p>
 	</div>
 
 
-
 	<script>
-		var greeting;
-		var hours = new Date().getHours();
-		var minute = new Date().getMinutes();
 
-		document.getElementById("jam").innerHTML = hours+" : "+minute;
+		setInterval(waktu,1000);
+		function waktu(){
+			var hours = new Date().getHours();
+			var minute = new Date().getMinutes();
+			var second = new Date().getSeconds();
+			document.getElementById('jam').innerHTML = hours+" : "+minute+" : "+second;	
 
-		if (hours<10) {
-			document.getElementById('waktu').innerHTML = "Good Morning";
-		}else if(hours<15){
-			document.getElementById('waktu').innerHTML = "Good Day";
-		}else if (hours<18) {
-			document.getElementById('waktu').innerHTML = "Good Afternoon";
-		}else if (hours<24) {
-			document.getElementById('waktu').innerHTML = "Good Night";
-		}
 
-		document.getElementById('tanggal').innerHTML = new Date().toDateString();
+			// document.getElementById('jam').innerHTML = hours+" : "+minute;
 
-		// tambahkan jam saat aktif kegiatan waktu sekarang
+			var abc = document.getElementsByTagName('body')[0];
 
-		if (hours>=7 && hours<=8) {
-			document.getElementById("jamPertama").style.backgroundColor = "green";
-		}else if(hours>=9 && hours<=11) {
-			document.getElementById("jamPertama").style.backgroundColor = "green";
-		}else if(hours>=13 && hours<=15) {
-			document.getElementById("jamKetiga").style.backgroundColor = "green";
+			if (hours<10) {
+				document.getElementById('waktu').innerHTML = "Good Morning";
+				abc.style.backgroundImage = "url('morning.jpg')";
+			}else if(hours<15){
+				document.getElementById('waktu').innerHTML = "Good Day";
+				abc.style.backgroundImage = "url('days.jpg')";
+			}else if (hours<18) {
+				document.getElementById('waktu').innerHTML = "Good Afternoon";
+				abc.style.backgroundImage = "url('Afternoon.jpg')";
+			}else if (hours<24) {
+				document.getElementById('waktu').innerHTML = "Good Night";
+				abc.style.backgroundImage = "url('Night.jpg')";
+			}
+
+			document.getElementById('tanggal').innerHTML = new Date().toDateString();
+
+			// tambahkan jam saat aktif kegiatan waktu sekarang
+
+			if (hours>=7 && hours<=9) {
+				if (hours == 7 && minute >= 30 || hours == 8 && minute < 60 || hours == 9 && minute <=30 ) {
+					document.getElementById("jamPertama").style.backgroundColor = "green";	
+				} else {
+					document.getElementById('notif_1').innerHTML = "Sekarang Adalah Jam Istirahat";
+					document.getElementById('notif_1').style.cssText = "display: initial!important;";
+				}
+			}else if(hours>=10 && hours<=11) {
+				if (hours ==10 && minute >= 30 || hours == 11 && minute <=30 ) {
+					document.getElementById("jamKedua").style.backgroundColor = "green";
+				}else {
+					document.getElementById('notif_1').innerHTML = "Sekarang Adalah Jam Istirahat";
+					document.getElementById('notif_1').style.cssText = "display: initial!important;";
+				}
+			}else if(hours>=13 && hours<=15) {
+				document.getElementById("jamKetiga").style.backgroundColor = "green";
+			}else{
+				document.getElementById('notif_1').innerHTML = "Sekarang Adalah Jam Istirahat";
+				document.getElementById('notif_1').style.cssText = "display: initial!important;";
+			}
 		}
 
 	</script>
